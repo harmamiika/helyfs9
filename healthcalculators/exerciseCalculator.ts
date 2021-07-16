@@ -21,7 +21,7 @@ if (process.argv.length < 3) {
   console.log('Not enough arguments from the command line!');
 }
 
-const calculateExercises = (
+export const calculateExercises = (
   exerciseHoursList: number[],
   target: number
 ): exerciseCalcResult | null => {
