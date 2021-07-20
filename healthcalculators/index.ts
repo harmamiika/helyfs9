@@ -24,11 +24,21 @@ app.get('/bmi', (req, res) => {
 });
 
 app.post('/exercises', (req, res) => {
+  //   const { daily_exercises, target } = req.body;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const { daily_exercises, target } = req.body;
+  const daily_exercises: number[] = req.body.daily_exercises;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const target: number = req.body.target;
 
   if (!daily_exercises || !target) {
     return res.json({ error: 'parameters missing' });
+  }
+
+  const checkedExercises: boolean = daily_exercises.every((num: number) =>
+    isNaN(num)
+  );
+  if (!checkedExercises || isNaN(target)) {
+    return res.json({ error: 'malformatted parameters' });
   }
 
   const reportObject = calculateExercises(daily_exercises, target);

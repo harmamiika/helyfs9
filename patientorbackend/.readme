@@ -1,0 +1,7 @@
+npm run tsc -- --init
+
+= init tsconfig
+
+
+
+npm install --save-dev eslint @types/express @typescript-eslint/eslint-plugin @typescript-eslint/parser
