@@ -1,6 +1,12 @@
-import { courseParts } from './Content';
+import React from 'react';
 
-const Total = ({ courseParts }: courseParts) => {
+import { CoursePart } from './App';
+
+interface TotalProps {
+  courseParts: CoursePart[];
+}
+
+const Total = ({ courseParts }: TotalProps) => {
   return (
     <p>
       Number of exercises{' '}
