@@ -8,6 +8,9 @@ export interface DiagnoseArray {
   DiagnoseArray: Array<Diagnose>;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-empty-interface
+export interface Entry {}
+
 export interface Patient {
   id: string;
   name: string;
@@ -15,6 +18,7 @@ export interface Patient {
   ssn: string;
   gender: 'male' | 'female';
   occupation: string;
+  entries: Entry[];
 }
 
 export interface PatientNoSSN {
@@ -24,3 +28,5 @@ export interface PatientNoSSN {
   gender: 'male' | 'female';
   occupation: string;
 }
+
+export type PublicPatient = Omit<Patient, 'ssn' | 'entries'>;
