@@ -10,6 +10,8 @@ import { Patient } from './types';
 import PatientListPage from './PatientListPage';
 import PatientDetailPage from './PatientDetailPage';
 
+import { setPatientList } from './state';
+
 const App = () => {
   const [, dispatch] = useStateValue();
   React.useEffect(() => {
@@ -20,9 +22,10 @@ const App = () => {
         const { data: patientListFromApi } = await axios.get<Patient[]>(
           `${apiBaseUrl}/patients`
         );
-        dispatch({ type: 'SET_PATIENT_LIST', payload: patientListFromApi });
+        console.log(patientListFromApi, 'asdasddas');
+        dispatch(setPatientList(patientListFromApi));
       } catch (e) {
-        console.error(e);
+        console.log(e);
       }
     };
     void fetchPatientList();
